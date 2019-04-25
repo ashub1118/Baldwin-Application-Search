@@ -1,0 +1,193 @@
+<div class="bootstrap">
+  <div id="content">
+    <div id="inner-content" class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div id="sidebar">
+            <span class="sidebar-title">Application Search</span>
+            <div class="filter-title">
+              <a>Application Type</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Application Type"></i>
+            </div>
+            <div class="p-3">
+              <ng-select2  [data]="applicationType"
+                       [value]="selectedApplicationType"
+                       (valueChanged)="changeApplicationType($event)" [placeholder]="placeHolderApplication"
+              ></ng-select2>
+
+            </div>
+
+            <div class="filter-title" *ngIf="yearFlag">
+              <a>Year</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Year"></i>
+            </div>
+            <div class="p-3" *ngIf="yearFlag">
+              <ng-select2 [data]="yearList" [value]="selectedYear" (valueChanged)="changeYear($event)" [placeholder]="placeHolderYear"></ng-select2>
+            </div>
+
+            <div class="filter-title" *ngIf="manufacturer">
+              <a>Manufacturer</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Manufacturer"></i>
+            </div>
+            <div class="p-3" *ngIf="manufacturer">
+              <ng-select2 [data]="manufactureList" [value]="selectedManufacture" (valueChanged)="changeManufacture($event)" [placeholder]="placeHolderManufacture"></ng-select2>
+            </div>
+
+            <div class="filter-title" *ngIf="make">
+              <a>Make (optional)</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Make (optional)"></i>
+            </div>
+            <div class="p-3" *ngIf="make">
+              <ng-select2 [data]="makerList" [value]="selectedMaker" (valueChanged)="changeMaker($event)" [placeholder]="placeHolderMaker"></ng-select2>
+            </div>
+
+
+            <div class="filter-title" *ngIf="equipmentType">
+              <a>EquipmentType (Optional)</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="EquipmentType (Optional)"></i>
+            </div>
+            <div class="p-3" *ngIf="equipmentType">
+              <ng-select2 [data]="equipmentTypeList" [value]="selectedEquipment" (valueChanged)="changeEquipment($event)" [placeholder]="placeHolderEquipment"></ng-select2>
+            </div>
+
+            <div class="filter-title" *ngIf="model">
+              <a>Model</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Model"></i>
+            </div>
+            <div class="p-3" *ngIf="model">
+              <ng-select2 [data]="modelList" [value]="selectedModel" (valueChanged)="changeModel($event)" [placeholder]="placeHolderModel"></ng-select2>
+            </div>
+
+            <div class="filter-title" *ngIf="engine">
+              <a>Engine</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Engine"></i>
+            </div>
+            <div class="p-3" *ngIf="engine">
+              <ng-select2 [data]="engineList" [value]="selectedEngin" (valueChanged)="changeEngine($event)" [placeholder]="placeHolderEngine"></ng-select2>
+            </div>
+
+            <span class="sidebar-title">Keyword Search</span>
+            <div class="sidebar-inner">
+              <div id="search-inputs-container">
+                <p class="search-text">Enter either a manufacturer or a model to search for:</p>
+                <div class="search-input input-group mb-3">
+                  <input type="text" maxlength="255" id="txtSearch" class="form-control" placeholder="Enter a keyword" autocomplete="off" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append" id="search-addon">
+                    <button id="btnSearch" type="submit" class="input-group-text">
+                      <a>
+                        <i class="fa fa-search"></i>
+                      </a>
+                    </button>
+                  </div>
+                  <div id="aqs-flyout"></div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div id="divResultsSearch" class="section" style="margin-bottom: 2em;">
+            <div class="search-results">
+              <strong id="txtSearched">Search results for: </strong>
+              <ul id="checkSel">
+
+                <li class="alert" *ngFor="let breadcum of selectionBreadCum"> {{breadcum.value}}
+                  <span  data-dismiss="alert" aria-label="close" (click)="removeBreadcum(breadcum)">
+                  <i class="fa fa-times" aria-hidden="true"></i></span>
+                </li>
+
+
+              </ul>
+
+            </div>
+
+
+          </div>
+          <div class="results" style="overflow-x:auto;">
+
+            <table id="search-results" cellpadding="0" cellspacing="10" border="0" style="width: 100%;" class="dataTable no-footer">
+              <thead>
+              <tr role="row">
+                <td>Filter </td>
+                <td>Baldwin Number </td>
+                <td>Qualifiers</td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr role="row" class="odd">
+                <td>Lube</td>
+                <td class="cross-baldwin"><a href="#">B30</a></td>
+                <td>Stanadyne</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="infoWindow">
+                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+              </tr>
+              <tr role="row" class="odd">
+                <td>Air</td>
+                <td class="cross-baldwin"><a href="#">PA2189</a></td>
+                <td>Stanadyne</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="infoWindow">
+                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+              </tr>
+
+              <tr role="row" class="odd">
+                <td>Cabin Air</td>
+                <td class="cross-baldwin">N/R</td>
+                <td>Stanadyne</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="infoWindow">
+                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+              </tr>
+
+              <tr role="row" class="odd">
+                <td>Fuel</td>
+                <td class="cross-baldwin"><a href="#">BF853</a></td>
+                <td>Stanadyne</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="infoWindow">
+                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+              </tr>
+
+              <tr role="row" class="odd">
+                <td>Transmission</td>
+                <td class="cross-baldwin"><a href="#">18139</a></td>
+                <td>Stanadyne</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="infoWindow">
+                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+              </tr>
+
+
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

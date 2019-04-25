@@ -1,0 +1,41 @@
+package com.vignette.wheretobuy;
+
+public class WhereToBuyConstant
+{
+  public static String whereToBuyURL = "http://cor089yw40:8080/solr/WhereToBuy";
+  public static String distributorMethod = "distributorSearch";
+  public static String geoListMethod = "geolist";
+  public static String productCategoryMethod = "wtbcategories";
+  public static String distributorInfoMethod = "distributorInfo";
+  public static String countryCode = "countryCode";
+  public static String searchType = "searchType";
+  public static String distributorType = "distributorType";
+  public static String postalCode = "postalCode";
+  public static String countryName = "countryName";
+  public static String divisionId = "divisionId";
+  public static String productId = "productId";
+  public static String distributorName = "distributorName";
+  public static String rows = "rows";
+  public static String start = "start";  
+  public static String rowLimit = "25";
+  public static String startFrom = "0";
+  public static String wt = "wt";
+  public static String point = "point";
+  public static int connectionTimeOut = 3000;
+  public static int socketTimeOut = 3000;
+  public static String city = "city";
+  public static String province = "province";
+  public static String countryId = "countryId";
+  public static String languageCode = "languageCode";
+  public static String distance = "distance";
+  public static String distributorId = "distributorId";
+  public static String phStageWebserviceURL = "https://phtest.parker.com/wcs/resources/store/10151/person/@self";
+  public static String proxyString = "phproxy1";
+  public static String firstToken = "test_WCToken";
+  public static String secondToken = "test_WCTrustedToken";
+  public static String level = "level";
+  public static String rootId = "rootId";
+  public static String leafNodeid = "leafNodeId";
+  public static String authowner = "authowner";
+  public static String distanceSearch="distanceSearch";
+}

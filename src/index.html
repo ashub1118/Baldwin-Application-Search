@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BaldwinApplicationSearch</title>
+  <base href="/">
+  <script src="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/js/jquery-1.11.1.min.js"></script>
+  <script src="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/js/homeBannerScript.js"></script>
+  <script src="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/js/bootstrap.js"></script>
+ <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="http://preview.baldwinfilters.com/parker/baldwin/assets/css/homepagestyle.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/css/flexslider.css" type="text/css"/>
+  <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/css/slick.css" type="text/css"/>
+  <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/css/lightcase.css" type="text/css"/>
+  <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/baldwin/assets/css/homepageCustom.css" type="text/css"/>
+  <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/css/colorbox.css" type="text/css"/>
+  <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />-->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/iso_bootstrap4.0.0min.css" type="text/css"/>
+  <link rel="stylesheet" href="assets/custom-apps.css">
+</head>
+<body>
+<div class="modal fade application search-popup-modal " id="search-popup-modal-show">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <h4>Applications Search</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      <ul>
+        <li>
+          <label>Application Type</label>
+          <select id="modale1" [(ngModel)]="applicationType" onchange="checkApplicationType()">
+            <option value="Automative Applications" selected >Automative Applications</option>
+            <option value="Off-Highway Applications">Off-Highway Applications</option>
+            <option value="Trucks & Buses Applications">Trucks & Buses Applications</option>
+          </select>
+        </li>
+        <li id="modalYear">
+          <label>Year</label>
+          <select id="modale2" onchange="checkValid()">
+            <option value="2019">Select Year</option>
+            <option value="2018">Select Year</option>
+            <option value="at">Select Year</option>
+            <option value="at">Select Year</option>
+          </select>
+        </li>
+
+        <li id="modalManufacturer">
+          <label>Manufacturer</label>
+          <select id="modale3" onload="checkValid()">
+            <option value="at">Select Manufacturer</option>
+            <option value="at">Select Manufacturer</option>
+            <option value="at">Select Manufacturer</option>
+            <option value="at">Select Manufacturer</option>
+          </select>
+        </li>
+
+        <li id="modalMake">
+        <label>Make (Optional)</label>
+        <select id="modale4">
+          <option value="at">Select Make</option>
+          <option value="at">Select Make</option>
+          <option value="at">Select Make</option>
+          <option value="at">Select Make</option>
+        </select>
+      </li>
+
+        <li id="modalEquipmentType">
+          <label>Equipment Type</label>
+          <select id="modale5" onload="checkValid()">
+            <option value="at">Select Equipment Type</option>
+            <option value="at">Select Equipment Type</option>
+            <option value="at">Select Equipment Type</option>
+            <option value="at">Select Equipment Type</option>
+          </select>
+        </li>
+
+        <li id="model">
+          <label>Model</label>
+          <select id="modale6" onload="checkValid()">
+            <option value="at">Select Model</option>
+            <option value="at">Select Model</option>
+            <option value="at">Select Model</option>
+            <option value="at">Select Model</option>
+          </select>
+        </li>
+        <li id="engine">
+          <label>Engine</label>
+          <select id="modale7" onload="checkValid()">
+            <option value="at">Select Engine</option>
+            <option value="at">Select Engine</option>
+            <option value="at">Select Engine</option>
+            <option value="at">Select Engine</option>
+          </select>
+        </li>
+
+        <li><input type="submit" disabled class="form-control search" value="serach" /></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+  <script>
+      checkApplicationType();
+      $( document ).ready( selectBoxCss );
+      function selectBoxCss() {
+          setTimeout(function(){
+              $("#e1, #e2, #e3, #e4, #e5, #e6, #e7, #modale1, #modale2, #modale3, #modale4, #modale5, #modale6, #modale7 ").select2();
+              }, 1);
+
+      }
+
+      (function($){
+          $('#search-popup-modal-show').modal({
+              backdrop: 'static',
+              keyboard: false
+          });
+      })(jQuery)
+
+    function checkApplicationType() {
+          if($("#modale1").val()=='Automative Applications'){
+              $("#modalEquipmentType").hide();
+              $("#modalManufacturer").hide();
+              $("#model").show();
+              $("#modalYear").show();
+              $("#modalMake").show();
+              $("#engine").hide();
+
+
+          }else if($("#modale1").val()=='Off-Highway Applications'){
+              $("#modalEquipmentType").show();
+              $("#modalManufacturer").show();
+              $("#model").show();
+              $("#modalYear").hide();
+              $("#modalMake").hide();
+              $("#engine").hide();
+
+          }else if($("#modale1").val()=='Trucks & Buses Applications'){
+              $("#modalEquipmentType").hide();
+              $("#modalManufacturer").show();
+              $("#model").show();
+              $("#modalYear").hide();
+              $("#modalMake").show();
+              $("#engine").hide();
+          }
+
+    }
+
+      function checkValid() {
+
+          this.parentDiv = $('ul li select');
+          console.log(this.parentDiv);
+          for(var i=0;i<this.parentDiv.length;i++){
+              if(this.parentDiv[i].value!='' && this.parentDiv[i].is(':visible')){
+
+              }
+          }
+      }
+  </script>
+  <!-- .container-->
+  <!-- ./container-->
+<app-root></app-root>
+</body>
+</html>

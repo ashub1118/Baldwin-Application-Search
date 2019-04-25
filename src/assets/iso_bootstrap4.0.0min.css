@@ -1,0 +1,221 @@
+.bootstrap .form-check-inline {
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-left: 0;
+	margin-right: .75rem
+}
+
+.bootstrap .form-check-inline .form-check-input {
+	position: static;
+	margin-top: 0;
+	margin-right: 6px;
+	margin-left: 0
+}
+
+
+
+
+
+.bootstrap .btn-toolbar .input-group {
+	width: auto
+}
+
+.bootstrap .dropdown-toggle-split {
+	padding-right: .5625rem;
+	padding-left: .5625rem
+}
+
+.bootstrap .btn-group-sm>.btn+.dropdown-toggle-split,
+.bootstrap .btn-sm+.dropdown-toggle-split {
+	padding-right: .375rem;
+	padding-left: .375rem
+}
+
+.bootstrap .btn-group-lg>.btn+.dropdown-toggle-split,
+.bootstrap .btn-lg+.dropdown-toggle-split {
+	padding-right: .75rem;
+	padding-left: .75rem
+}
+
+.bootstrap .btn-group-vertical {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center
+}
+
+.bootstrap .btn-group-vertical .btn,
+.bootstrap .btn-group-vertical .btn-group {
+	width: 100%
+}
+
+.bootstrap .btn-group-vertical>.btn+.btn,
+.bootstrap .btn-group-vertical>.btn+.btn-group,
+.bootstrap .btn-group-vertical>.btn-group+.btn,
+.bootstrap .btn-group-vertical>.btn-group+.btn-group {
+	margin-top: -1px;
+	margin-left: 0
+}
+
+.bootstrap .input-group-append,
+.bootstrap .input-group-append .btn+.btn,
+.bootstrap .input-group-append .btn+.input-group-text,
+.bootstrap .input-group-append .input-group-text+.btn,
+.bootstrap .input-group-append .input-group-text+.input-group-text,
+.bootstrap .input-group-prepend .btn+.btn,
+.bootstrap .input-group-prepend .btn+.input-group-text,
+.bootstrap .input-group-prepend .input-group-text+.btn,
+.bootstrap .input-group-prepend .input-group-text+.input-group-text,
+.bootstrap .input-group>.custom-file+.custom-file,
+.bootstrap .input-group>.custom-file+.custom-select,
+.bootstrap .input-group>.custom-file+.form-control,
+.bootstrap .input-group>.custom-select+.custom-file,
+.bootstrap .input-group>.custom-select+.custom-select,
+.bootstrap .input-group>.custom-select+.form-control,
+.bootstrap .input-group>.form-control+.custom-file,
+.bootstrap .input-group>.form-control+.custom-select,
+.bootstrap .input-group>.form-control+.form-control {
+	margin-left: -1px
+}
+
+.bootstrap .btn-group-vertical>.btn-group:not(:last-child)>.btn,
+.bootstrap .btn-group-vertical>.btn:not(:last-child):not(.dropdown-toggle) {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0
+}
+
+.bootstrap .btn-group-vertical>.btn-group:not(:first-child)>.btn,
+.bootstrap .btn-group-vertical>.btn:not(:first-child) {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0
+}
+
+.bootstrap .btn-group-toggle>.btn,
+.bootstrap .btn-group-toggle>.btn-group>.btn {
+	margin-bottom: 0
+}
+
+.bootstrap .btn-group-toggle>.btn input[type=radio],
+.bootstrap .btn-group-toggle>.btn input[type=checkbox],
+.bootstrap .btn-group-toggle>.btn-group>.btn input[type=radio],
+.bootstrap .btn-group-toggle>.btn-group>.btn input[type=checkbox] {
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+	pointer-events: none
+}
+
+.bootstrap .input-group {
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-align: stretch;
+	-ms-flex-align: stretch;
+	align-items: stretch;
+	width: 100%
+}
+
+.bootstrap .input-group>.custom-file,
+.bootstrap .input-group>.custom-select,
+.bootstrap .input-group>.form-control {
+	position: relative;
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	width: 1%;
+	margin-bottom: 0
+}
+
+.bootstrap .input-group>.custom-file:focus,
+.bootstrap .input-group>.custom-select:focus,
+.bootstrap .input-group>.form-control:focus {
+	z-index: 3
+}
+
+.bootstrap .input-group>.custom-file {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center
+}
+
+.bootstrap .input-group-append,
+.bootstrap .input-group-prepend {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex
+}
+
+.bootstrap .input-group-append .btn,
+.bootstrap .input-group-prepend .btn {
+	position: relative;
+	z-index: 2
+}
+
+.bootstrap .input-group-prepend {
+	margin-right: -1px
+}
+
+.bootstrap .input-group-text {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: .375rem .75rem;
+	margin-bottom: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	text-align: center;
+	white-space: nowrap;
+	background-color: #e9ecef;
+	border: 1px solid #ced4da;
+	border-radius: .25rem
+}
+
+.bootstrap .input-group-text input[type=radio],
+.bootstrap .input-group-text input[type=checkbox] {
+	margin-top: 0
+}
+
+.bootstrap .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+.bootstrap .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
+.bootstrap .input-group>.input-group-append:not(:last-child)>.btn,
+.bootstrap .input-group>.input-group-append:not(:last-child)>.input-group-text,
+.bootstrap .input-group>.input-group-prepend>.btn,
+.bootstrap .input-group>.input-group-prepend>.input-group-text {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0
+}
+
+.bootstrap .input-group>.input-group-append>.btn,
+.bootstrap .input-group>.input-group-append>.input-group-text,
+.bootstrap .input-group>.input-group-prepend:first-child>.btn:not(:first-child),
+.bootstrap .input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),
+.bootstrap .input-group>.input-group-prepend:not(:first-child)>.btn,
+.bootstrap .input-group>.input-group-prepend:not(:first-child)>.input-group-text {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0
+}
+
+.bootstrap a:not([href]):not([tabindex]), .bootstrap a:not([href]):not([tabindex]):focus, .bootstrap a:not([href]):not([tabindex]):hover{
+	color: inherit;
+    text-decoration: none;
+}
