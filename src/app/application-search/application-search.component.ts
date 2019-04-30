@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import {Select2OptionData} from "ng-select2";
 import {BreadCum} from "../bread-cum";
-function checkApplicationType(event){
-    console.log("function called");
-}
+import {HttpClient} from "@angular/common/http";
+
+
 @Component({
   selector: 'app-application-search',
   templateUrl: './application-search.component.html',
   styleUrls: ['./application-search.component.css']
 })
 export class ApplicationSearchComponent implements OnInit {
+
     yearFlag: boolean=true;
+    yearFlagModel: boolean = true;
+    manufacturerFlagModel: boolean = false;
+    makeFlagModel: boolean = true;
+    modelFlagModel: boolean = true;
+    equipmentTypeFlagModel: boolean = false;
+    engineFlagModel: boolean = true;
     make: boolean=true;
     yearList = [];
     model: boolean=true;
@@ -38,12 +45,21 @@ export class ApplicationSearchComponent implements OnInit {
     placeHolderModel;
     placeHolderEngine;
     placeHolderEquipment;
-  constructor() {   }
+    applicationTypeModel= [];
+    yearListModel = [];
+    manufactureListModel = [];
+    makerListModel = [];
+    equipmentTypeListModel = [];
+    modelListModel = [];
+    engineListModel = [];
+    http: HttpClient;
+  constructor(http: HttpClient) {  this.http = http; }
     public applicationType: Array<Select2OptionData>;
     public value: string[];
     public current: string;
 
   ngOnInit() {
+      this.getYearList();
       this.placeHolderApplication = 'Select An Application';
       this.placeHolderYear = 'Select Year';
       this.placeHolderManufacture = 'Select Manufacture';
@@ -191,31 +207,88 @@ export class ApplicationSearchComponent implements OnInit {
       this.value = ['Automative Applications'];
 
       this.current = this.value.join(' | ');
+
+      (window as any).$('#search-popup-modal-show').modal({
+          backdrop: 'static',
+          keyboard: false
+      });
+
+      this.applicationTypeModel = this.applicationType;
   }
 
     changeYear(e){
         this.selectionBreadCum.push(new BreadCum('Year',e.value));
     }
 
+    changeYearModel(e){
+
+    }
     changeManufacture(e){
         this.selectionBreadCum.push(new BreadCum('Manufacture',e.value));
     }
 
+    changeManufactureModel(e){
+
+    }
     changeMaker(e){
         this.selectionBreadCum.push(new BreadCum('Maker',e.value));
     }
+    changeMakerModel(e){
 
+    }
     changeEquipment(e){
         this.selectionBreadCum.push(new BreadCum('Equipment',e.value));
     }
+    changeEquipmentModel(e){
 
+    }
     changeModel(e){
         this.selectionBreadCum.push(new BreadCum('Model',e.value));
     }
+    changeModelModel(e){
 
+    }
     changeEngine(e){
         this.selectionBreadCum.push(new BreadCum('Engine',e.value));
     }
+    changeEngineModel(e){
+
+    }
+
+
+    public changeApplicationTypeModel(e: any): void {
+
+        this.selectionBreadCum = [];
+
+        this.selectionBreadCum.push(new BreadCum('Application',e.value));
+        this.selected = e.value;
+        if(this.selected=='Automative Applications'){
+            this.yearFlagModel=true;
+            this.makeFlagModel=true;
+            this.modelFlagModel=true;
+            this.manufacturerFlagModel=false;
+            this.equipmentTypeFlagModel=false;
+            this.engineFlagModel=true;
+        }
+        else if(this.selected=='Off-Highway Applications'){
+            this.manufacturerFlagModel=true;
+            this.equipmentTypeFlagModel=true;
+            this.modelFlagModel=true;
+            this.yearFlagModel=false;
+            this.makeFlagModel=false;
+            this.engineFlagModel=true;
+        }
+        else if(this.selected=='Trucks & Buses Applications'){
+            this.manufacturerFlagModel=true;
+            this.makeFlagModel=true;
+            this.modelFlagModel=true;
+            this.yearFlagModel=false;
+            this.equipmentTypeFlagModel=false;
+            this.engineFlagModel=true;
+        }
+        (window as any).selectBoxCss();
+    }
+
     public changeApplicationType(e: any): void {
 
         this.selectionBreadCum = [];
@@ -228,6 +301,7 @@ export class ApplicationSearchComponent implements OnInit {
             this.model=true;
             this.manufacturer=false;
             this.equipmentType=false;
+            this.engine=true;
         }
         else if(this.selected=='Off-Highway Applications'){
             this.manufacturer=true;
@@ -235,6 +309,7 @@ export class ApplicationSearchComponent implements OnInit {
             this.model=true;
             this.yearFlag=false;
             this.make=false;
+            this.engine=true;
         }
         else if(this.selected=='Trucks & Buses Applications'){
             this.manufacturer=true;
@@ -242,10 +317,10 @@ export class ApplicationSearchComponent implements OnInit {
             this.model=true;
             this.yearFlag=false;
             this.equipmentType=false;
+            this.engine=true;
         }
         (window as any).selectBoxCss();
     }
-
     removeBreadcum(selectedremoveBreacum: BreadCum){
         let i=0;
         for(let i=0;i<this.selectionBreadCum.length;i++){
@@ -261,28 +336,16 @@ export class ApplicationSearchComponent implements OnInit {
         this.selectedModel='';
         this.selectedEquipment='';
 
-        for(let i=0;i<this.selectionBreadCum.length;i++){
-            let type=this.selectionBreadCum[i].type;
-            switch(type) {
-                case 'Application':
-                    this.selectedApplicationType = this.selectionBreadCum[i].value;
-                    break;
-                case 'Year':
-                    this.selectedYear = this.selectionBreadCum[i].value;
-                    break;
-                case 'Maker':
-                    this.selectedMaker = this.selectionBreadCum[i].value;
-                    break;
-                case 'Model':
-                    this.selectedModel = this.selectionBreadCum[i].value;
-                    break;
-                case 'Equipment':
-                    this.selectedEquipment = this.selectionBreadCum[i].value;
-                    break;
-                case 'Engine':
-                    this.selectedEngin = this.selectionBreadCum[i].value;
-                    break;
+
+    }
+
+    getYearList(){
+        let url=(window as any).searchURL+'?q=NOT%20year_s:""&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:1&rows=0&wt=json&indent=true&facet=true&facet.field=year_s&facet.limit=-1&facet.mincount=1'
+        console.log(url);
+        this.http.get(url).subscribe(
+            data => {
+                console.log(data);
             }
-        }
+        );
     }
 }

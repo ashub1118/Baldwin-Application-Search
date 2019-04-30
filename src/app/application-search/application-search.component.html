@@ -1,3 +1,51 @@
+<div class="modal fade application search-popup-modal " id="search-popup-modal-show">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <h4>Applications Search</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      <ul>
+        <li>
+          <label>Application Type</label>
+          <ng-select2  [data]="applicationTypeModel"
+                       [value]="selectedApplicationType"
+                       (valueChanged)="changeApplicationTypeModel($event)" [placeholder]="placeHolderApplication"></ng-select2>
+        </li>
+        <li id="modalYear" *ngIf="yearFlagModel">
+          <label>Year</label>
+          <ng-select2 [data]="yearListModel" [value]="selectedYear" (valueChanged)="changeYearModel($event)" [placeholder]="placeHolderYear"></ng-select2>
+        </li>
+
+        <li id="modalManufacturer" *ngIf="manufacturerFlagModel">
+          <label>Manufacturer</label>
+          <ng-select2 [data]="manufactureListModel" [value]="selectedManufacture" (valueChanged)="changeManufactureModel($event)" [placeholder]="placeHolderManufacture"></ng-select2>
+        </li>
+
+        <li id="modalMake" *ngIf="makeFlagModel">
+          <label>Make (Optional)</label>
+          <ng-select2 [data]="makerListModel" [value]="selectedMaker" (valueChanged)="changeMakerModel($event)" [placeholder]="placeHolderMaker"></ng-select2>
+        </li>
+
+        <li id="modalEquipmentType" *ngIf="equipmentTypeFlagModel">
+          <label>Equipment Type</label>
+          <ng-select2 [data]="equipmentTypeListModel" [value]="selectedEquipment" (valueChanged)="changeEquipmentModel($event)" [placeholder]="placeHolderEquipment"></ng-select2>
+        </li>
+
+        <li id="model" *ngIf="modelFlagModel">
+          <label>Model</label>
+          <ng-select2 [data]="modelListModel" [value]="selectedModel" (valueChanged)="changeModelModel($event)" [placeholder]="placeHolderModel"></ng-select2>
+        </li>
+        <li id="engine" *ngIf="engineFlagModel">
+          <label>Engine</label>
+          <ng-select2 [data]="engineListModel" [value]="selectedEngin" (valueChanged)="changeEngineModel($event)" [placeholder]="placeHolderEngine"></ng-select2>
+        </li>
+
+        <li><input type="submit" disabled class="form-control search" value="serach" /></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="bootstrap">
   <div id="content">
     <div id="inner-content" class="container">
@@ -93,10 +141,14 @@
               <strong id="txtSearched">Search results for: </strong>
               <ul id="checkSel">
 
-                <li class="alert" *ngFor="let breadcum of selectionBreadCum"> {{breadcum.value}}
-                  <span  data-dismiss="alert" aria-label="close" (click)="removeBreadcum(breadcum)">
+                <ng-container *ngFor="let breadcum of selectionBreadCum">
+                  <li class="alert" > {{breadcum.value}}
+                    <span   aria-label="close" (click)="removeBreadcum(breadcum)">
                   <i class="fa fa-times" aria-hidden="true"></i></span>
-                </li>
+                  </li>
+
+                </ng-container>
+
 
 
               </ul>

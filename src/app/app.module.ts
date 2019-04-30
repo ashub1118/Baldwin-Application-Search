@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ApplicationSearchComponent } from './application-search/application-search.component';
 import {FormsModule} from "@angular/forms";
 import { NgSelect2Module } from 'ng-select2';
+import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +16,8 @@ import { NgSelect2Module } from 'ng-select2';
     BrowserModule,
     AppRoutingModule,
       FormsModule,
-      NgSelect2Module
+      NgSelect2Module,
+      HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
