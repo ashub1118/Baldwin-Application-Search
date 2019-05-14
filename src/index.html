@@ -7,6 +7,8 @@
   <script src="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/js/jquery-1.11.1.min.js"></script>
   <script src="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/js/homeBannerScript.js"></script>
   <script src="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/js/bootstrap.js"></script>
+  <script src="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/js/lightcase.js"></script>
+  <script src="assets/watch.js"></script>
  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -18,18 +20,35 @@
   <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/css/lightcase.css" type="text/css"/>
   <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/baldwin/assets/css/homepageCustom.css" type="text/css"/>
   <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/css/colorbox.css" type="text/css"/>
+  <link rel="stylesheet" href="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/css/lightcase.css" type="text/css">
   <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />-->
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="stylesheet" href="assets/iso_bootstrap4.0.0min.css" type="text/css"/>
+<!--  <link rel="stylesheet" href="assets/iso_bootstrapfsek4.0.0min.css" type="text/css"/>-->
   <link rel="stylesheet" href="assets/custom-apps.css">
 </head>
 <body>
-
+<section id="page-title" class="flw page-title-cross">
+  <div class="container">
+    <h1 class="my-4 pull-left">APPLICATION SEARCH</h1>
+    <div class="button-set-email btn-xs-block pull-right " style="display:none">
+      <a href="#" data-toggle="modal" data-target="#myModalEmail" class="button-email" onclick="" title="Email">
+        <i class="fa fa-envelope-o"></i>Email
+      </a>
+      <a href="#" class="button-print" onclick="window.print(); return false;" title="Print"><i class="fa fa-print"></i>Print</a>
+    </div>
+  </div>
+</section>
+<div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
 
 
 
   <script>
     var searchURL = 'http://searchdev.parker.com/solr/BaldwinECatalog/select';
+    var searchDomain='//searchdev.parker.com';
+    var whereToBuyUrl="https://test.parker.com/portal/site/Baldwin/menuitem.74ac2939661ff5b7f2ae22c04256d1ca/?vgnextoid=1ede1f1a8ca96610VgnVCM100000b4a81dacRCRD&vgnextfmt=EN&divid=N11284&country=United%20States&productSeriesId=2764184"
+    var translations = [];
       checkApplicationType();
       $( document ).ready( selectBoxCss );
       function selectBoxCss() {
@@ -38,14 +57,23 @@
               }, 1);
 
       }
+      $(".fa-chevron-right").on('click',function () {
+          console.log($(this));
+      })
 
-      (function($){
+    function accordianClickedEvent(event,appln) {
+        $(".accordion-row").not($("#accordian"+appln)).removeClass('active');
+        $("#accordian"+appln).toggleClass('active');
+        $(".accordian-body").not($('#demo'+appln)).removeClass('in');
+    }
+
+      function showModal(){
           $('#search-popup-modal-show').modal({
               backdrop: 'static',
               keyboard: false
           });
-      })(jQuery)
-
+      }
+    showModal();
     function checkApplicationType() {
           if($("#modale1").val()=='Automative Applications'){
               $("#modalEquipmentType").hide();
@@ -85,9 +113,28 @@
               }
           }
       }
+
+      function hideModal(){
+          $(".modal").hide();
+      }
+
+      function openAccordian(applicationNumber){
+          setTimeout(function(){
+              $('#demo'+applicationNumber).addClass("in");
+              $('#accordian'+applicationNumber).addClass('active');
+          }, 1000);
+          console.log($("#demo"+applicationNumber));
+
+      }
   </script>
   <!-- .container-->
   <!-- ./container-->
+  <section id="g3_homePage" class="flw">
 <app-root></app-root>
+  </section>
+
+<div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
 </body>
 </html>

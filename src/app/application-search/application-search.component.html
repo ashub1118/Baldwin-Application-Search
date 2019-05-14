@@ -1,46 +1,47 @@
-<div class="modal fade application search-popup-modal " id="search-popup-modal-show">
+<div  class="modal fade application search-popup-modal " id="search-popup-modal-show">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <h4>Applications Search</h4>
+      <h4>{{applicationSearch}}</h4>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
 
       <ul>
         <li>
-          <label>Application Type</label>
+          <label>{{applicationTypeText}}</label>
           <ng-select2  [data]="applicationTypeModel"
-                       [value]="selectedApplicationType"
+
                        (valueChanged)="changeApplicationTypeModel($event)" [placeholder]="placeHolderApplication"></ng-select2>
         </li>
         <li id="modalYear" *ngIf="yearFlagModel">
-          <label>Year</label>
-          <ng-select2 [data]="yearListModel" [value]="selectedYear" (valueChanged)="changeYearModel($event)" [placeholder]="placeHolderYear"></ng-select2>
+          <label>{{year}}</label>
+          <ng-select2 [data]="yearListModel" [(ngModel)]="selectedYearModel" (valueChanged)="changeYearModel($event)" [placeholder]="placeHolderYear"></ng-select2>
         </li>
 
         <li id="modalManufacturer" *ngIf="manufacturerFlagModel">
-          <label>Manufacturer</label>
-          <ng-select2 [data]="manufactureListModel" [value]="selectedManufacture" (valueChanged)="changeManufactureModel($event)" [placeholder]="placeHolderManufacture"></ng-select2>
+          <label>{{manufacturerText}}</label>
+          <ng-select2 [data]="manufactureListModel" [(ngModel)]="selectedManufactureModel" (valueChanged)="changeManufactureModel($event)" [placeholder]="placeHolderManufacture"></ng-select2>
         </li>
 
         <li id="modalMake" *ngIf="makeFlagModel">
-          <label>Make (Optional)</label>
-          <ng-select2 [data]="makerListModel" [value]="selectedMaker" (valueChanged)="changeMakerModel($event)" [placeholder]="placeHolderMaker"></ng-select2>
+          <label>{{makeText}}</label>
+          <ng-select2 [data]="makerListModel" [(ngModel)]="selectedMakerModel" (valueChanged)="changeMakerModel($event)" [placeholder]="placeHolderMaker"></ng-select2>
         </li>
 
         <li id="modalEquipmentType" *ngIf="equipmentTypeFlagModel">
-          <label>Equipment Type</label>
-          <ng-select2 [data]="equipmentTypeListModel" [value]="selectedEquipment" (valueChanged)="changeEquipmentModel($event)" [placeholder]="placeHolderEquipment"></ng-select2>
+          <label>{{equipmentText}}</label>
+          <ng-select2 [data]="equipmentTypeListModel" [(ngModel)]="selectedEquipmentModel" (valueChanged)="changeEquipmentModel($event)" [placeholder]="placeHolderEquipment"></ng-select2>
         </li>
 
         <li id="model" *ngIf="modelFlagModel">
-          <label>Model</label>
-          <ng-select2 [data]="modelListModel" [value]="selectedModel" (valueChanged)="changeModelModel($event)" [placeholder]="placeHolderModel"></ng-select2>
+          <label>{{modelText}}</label>
+          <ng-select2 [data]="modelListModel" [(ngModel)]="selectedModelModel" (valueChanged)="changeModelModel($event)" [placeholder]="placeHolderModel"></ng-select2>
         </li>
         <li id="engine" *ngIf="engineFlagModel">
-          <label>Engine</label>
-          <ng-select2 [data]="engineListModel" [value]="selectedEngin" (valueChanged)="changeEngineModel($event)" [placeholder]="placeHolderEngine"></ng-select2>
+          <label>{{engineText}}</label>
+          <ng-select2 [data]="engineListModel" [(ngModel)]="selectedEnginModel" (valueChanged)="changeEngineModel($event)" [placeholder]="placeHolderEngine"></ng-select2>
         </li>
 
-        <li><input type="submit" disabled class="form-control search" value="serach" /></li>
+        <li *ngIf="popUpSubmitButtonDisabled == true"><input type="submit" disabled class="form-control search search-disable" value="{{searchLabel}}" (click)="modelSubmit()"/></li>
+        <li *ngIf="popUpSubmitButtonDisabled == false"><input type="submit"  class="form-control search" value="{{searchLabel}}" (click)="modelSubmit()"/></li>
       </ul>
     </div>
   </div>
@@ -52,69 +53,69 @@
       <div class="row">
         <div class="col-lg-3">
           <div id="sidebar">
-            <span class="sidebar-title">Application Search</span>
+            <span class="sidebar-title">{{applicationSearch}}</span>
             <div class="filter-title">
-              <a>Application Type</a>
-              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Application Type"></i>
+              <a>{{applicationTypeText}}</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="{{applicationTypeText}}" data-original-title="Application Type"></i>
             </div>
             <div class="p-3">
               <ng-select2  [data]="applicationType"
-                       [value]="selectedApplicationType"
+                           [(ngModel)]="selectedApplicationType"
                        (valueChanged)="changeApplicationType($event)" [placeholder]="placeHolderApplication"
               ></ng-select2>
 
             </div>
 
             <div class="filter-title" *ngIf="yearFlag">
-              <a>Year</a>
-              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Year"></i>
+              <a>{{year}}</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="{{year}}" data-original-title="Year"></i>
             </div>
             <div class="p-3" *ngIf="yearFlag">
-              <ng-select2 [data]="yearList" [value]="selectedYear" (valueChanged)="changeYear($event)" [placeholder]="placeHolderYear"></ng-select2>
+              <ng-select2 [data]="yearList" [(ngModel)]="selectedYear" (valueChanged)="changeYear($event)" [placeholder]="placeHolderYear"></ng-select2>
             </div>
 
             <div class="filter-title" *ngIf="manufacturer">
-              <a>Manufacturer</a>
-              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Manufacturer"></i>
+              <a>{{manufacturerText}}</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="{{manufacturerText}}" data-original-title="Manufacturer"></i>
             </div>
             <div class="p-3" *ngIf="manufacturer">
-              <ng-select2 [data]="manufactureList" [value]="selectedManufacture" (valueChanged)="changeManufacture($event)" [placeholder]="placeHolderManufacture"></ng-select2>
+              <ng-select2 [data]="manufactureList"  [(ngModel)]="selectedManufacture" (valueChanged)="changeManufacture($event)" [placeholder]="placeHolderManufacture"></ng-select2>
             </div>
 
             <div class="filter-title" *ngIf="make">
-              <a>Make (optional)</a>
-              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Make (optional)"></i>
+              <a>{{makeText}}</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="{{makeText}}" data-original-title="Make (optional)"></i>
             </div>
             <div class="p-3" *ngIf="make">
-              <ng-select2 [data]="makerList" [value]="selectedMaker" (valueChanged)="changeMaker($event)" [placeholder]="placeHolderMaker"></ng-select2>
+              <ng-select2 [data]="makerList" [(ngModel)]="selectedMaker" (valueChanged)="changeMaker($event)" [placeholder]="placeHolderMaker"></ng-select2>
             </div>
 
 
             <div class="filter-title" *ngIf="equipmentType">
-              <a>EquipmentType (Optional)</a>
-              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="EquipmentType (Optional)"></i>
+              <a>{{equipmentText}}</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="{{equipmentText}}" data-original-title="EquipmentType (Optional)"></i>
             </div>
             <div class="p-3" *ngIf="equipmentType">
-              <ng-select2 [data]="equipmentTypeList" [value]="selectedEquipment" (valueChanged)="changeEquipment($event)" [placeholder]="placeHolderEquipment"></ng-select2>
+              <ng-select2 [data]="equipmentTypeList" [(ngModel)]="selectedEquipment" (valueChanged)="changeEquipment($event)" [placeholder]="placeHolderEquipment"></ng-select2>
             </div>
 
             <div class="filter-title" *ngIf="model">
-              <a>Model</a>
-              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Model"></i>
+              <a>{{modelText}}</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="{{modelText}}" data-original-title="Model"></i>
             </div>
             <div class="p-3" *ngIf="model">
-              <ng-select2 [data]="modelList" [value]="selectedModel" (valueChanged)="changeModel($event)" [placeholder]="placeHolderModel"></ng-select2>
+              <ng-select2 [data]="modelList" [(ngModel)]="selectedModel" (valueChanged)="changeModel($event)" [placeholder]="placeHolderModel"></ng-select2>
             </div>
 
             <div class="filter-title" *ngIf="engine">
-              <a>Engine</a>
-              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Engine"></i>
+              <a>{{engineText}}</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="{{engineText}}" data-original-title="Engine"></i>
             </div>
             <div class="p-3" *ngIf="engine">
-              <ng-select2 [data]="engineList" [value]="selectedEngin" (valueChanged)="changeEngine($event)" [placeholder]="placeHolderEngine"></ng-select2>
+              <ng-select2 [data]="engineList" [(ngModel)]="selectedEngin" (valueChanged)="changeEngine($event)" [placeholder]="placeHolderEngine"></ng-select2>
             </div>
 
-            <span class="sidebar-title">Keyword Search</span>
+          <!--  <span class="sidebar-title">Keyword Search</span>
             <div class="sidebar-inner">
               <div id="search-inputs-container">
                 <p class="search-text">Enter either a manufacturer or a model to search for:</p>
@@ -132,11 +133,11 @@
               </div>
 
 
-            </div>
+            </div>-->
           </div>
         </div>
         <div class="col-lg-9">
-          <div id="divResultsSearch" class="section" style="margin-bottom: 2em;">
+          <!--<div id="divResultsSearch" class="section" style="margin-bottom: 2em;">
             <div class="search-results">
               <strong id="txtSearched">Search results for: </strong>
               <ul id="checkSel">
@@ -156,15 +157,16 @@
             </div>
 
 
-          </div>
-          <div class="results" style="overflow-x:auto;">
-
+          </div>-->
+          <div class="results" style=""><!-- overflow-x:auto; -->
+            <div *ngIf="totalcount>0 || totalcount ==null; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
             <table id="search-results" cellpadding="0" cellspacing="10" border="0" style="width: 100%;" class="dataTable no-footer">
               <thead>
               <tr role="row">
-                <td>Filter </td>
-                <td>Baldwin Number </td>
-                <td>Qualifiers</td>
+                <td>{{filterText}} </td>
+                <td>{{baldwinNumberText}} </td>
+                <td>{{qualifiersText}}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -172,10 +174,13 @@
               </tr>
               </thead>
               <tbody>
+              <ng-container *ngFor="let result of productPartResults">
               <tr role="row" class="odd">
-                <td>Lube</td>
-                <td class="cross-baldwin"><a href="#">B30</a></td>
-                <td>Stanadyne</td>
+                <td>{{result.partPrompt_si}}</td>
+                <td class="cross-baldwin"><a *ngIf="checkUrl(result.bPartnumber_s)==true" routerLink="/partDetail/{{result.bPartnumber_s}}" [queryParams]="{application: selectedApplicationType}">{{result.bPartnumber_s}}</a>
+                  <a *ngIf="checkUrl(result.bPartnumber_s)==false">{{result.bPartnumber_s}}</a>
+                </td>
+                <td>{{result.notes_si}}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -183,53 +188,7 @@
               <tr class="infoWindow">
                 <td colspan="6" class="hiddenRow" style="padding:0;"></td>
               </tr>
-              <tr role="row" class="odd">
-                <td>Air</td>
-                <td class="cross-baldwin"><a href="#">PA2189</a></td>
-                <td>Stanadyne</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr class="infoWindow">
-                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
-              </tr>
-
-              <tr role="row" class="odd">
-                <td>Cabin Air</td>
-                <td class="cross-baldwin">N/R</td>
-                <td>Stanadyne</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr class="infoWindow">
-                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
-              </tr>
-
-              <tr role="row" class="odd">
-                <td>Fuel</td>
-                <td class="cross-baldwin"><a href="#">BF853</a></td>
-                <td>Stanadyne</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr class="infoWindow">
-                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
-              </tr>
-
-              <tr role="row" class="odd">
-                <td>Transmission</td>
-                <td class="cross-baldwin"><a href="#">18139</a></td>
-                <td>Stanadyne</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr class="infoWindow">
-                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
-              </tr>
+              </ng-container>
 
 
 
@@ -237,6 +196,54 @@
 
               </tbody>
             </table>
+            </ng-template>
+            <ng-template #elseBlock>
+              <div [ngStyle]="{display: isSubmitted == true? 'block':'none'}">
+                <div class="flw search-not-found">
+                  <h3>{{contactSubmitted}}</h3>
+                </div>
+              </div>
+              <div class="flw search-not-found" [ngStyle]="{display: isSubmitted == false? 'block':'none'}">
+                <h3>{{sorryLabel}} </h3>
+                <h3 class="no-border">{{detailLabel}}</h3>
+                <ul>
+                  <form [formGroup]="partRequestForm" (ngSubmit)="submitContact()">
+                    <li>
+                      <label>{{fnameLabel}}</label>
+                      <input type="text" class="form-control" formControlName="firstName"/>
+                      <span *ngIf="!partRequestForm.get('firstName').valid && partRequestForm.get('firstName').touched"
+                            class="help-block"> {{invalidFirstNameText}}</span>
+                    </li>
+                    <li>
+                      <label>{{lnameLabel}}</label>
+                      <input type="text" class="form-control" formControlName="lastName"/>
+                      <span *ngIf="!partRequestForm.get('lastName').valid && partRequestForm.get('lastName').touched"
+                            class="help-block">{{invalidLastNameText}}</span>
+                    </li>
+                    <li>
+                      <label>{{emailLabel}}</label>
+                      <input type="text" class="form-control" formControlName="email"/>
+                      <span *ngIf="!partRequestForm.get('email').valid && partRequestForm.get('email').touched"
+                            class="help-block ">{{EmailInvalidText}}</span>
+                    </li>
+                    <li>
+                      <label>{{phoneLabel}}</label>
+                      <input type="text" class="form-control" formControlName="phone"/>
+                      <span *ngIf="!partRequestForm.get('phone').valid && partRequestForm.get('phone').touched"
+                            class="help-block ">{{phoneInvalidText}}</span>
+                    </li>
+                    <li>
+                      <label>{{additionalInfoLabel}}</label>
+                      <textarea name="message" rows="3" cols="30" class="form-control" formControlName="additionalInformation"></textarea>
+                    </li>
+                    <li>
+
+                      <input type="submit" [disabled]="!partRequestForm.valid" value="{{submitLabel}}" />
+                    </li>
+                  </form>
+                </ul>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>

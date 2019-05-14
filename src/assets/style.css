@@ -1327,3 +1327,7 @@ height: 13px;
 		clear: both;
 	}
 }
+
+.select2-selection__clear{
+  display: none;
+}

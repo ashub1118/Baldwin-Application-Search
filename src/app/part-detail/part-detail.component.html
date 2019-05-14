@@ -1,0 +1,499 @@
+<div class="bootstrap">
+  <div id="content">
+    <div id="inner-content" class="container">
+
+
+      <div class="info_section slider_section mobile_info_section">
+        <div class="row">
+          <!-------------Product page redesign:------>
+          <div class="col-xs-12 col-sm-3 col-lg-4 product-desc">
+            <div class="row">
+              <!-------------Product page redesign: change col-lg-4 to col-lg-12------>
+              <div class="col-xs-12 col-sm-12 col-lg-12 firstPara">
+                <div class="row">
+                  <!-- ---edit for slider -->
+                  <div class="col-xs-12 col-sm-12 col-lg-12">
+                    <div class="slider-for slick-initialized slick-slider">
+                      <a href="http:{{imageScr}}" data-rel="lightcase">
+                        <img id="productMainImage" src="http:{{imageScr}}" title="{{desc}}">
+                        <div class="clear"></div>
+                        <p id="clickforlargerview">
+                          {{clickForLargerView}}
+                        </p>
+                      </a>
+                      <div class="slick-list draggable">
+                        <div class="slick-track" style="opacity: 1; width: 0px;"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-8 col-sm-10 col-lg-8 angle-margin">
+                    <div class="slider-nav alt-image slick-initialized slick-slider">
+                      <div class="slick-list draggable" style="padding: 0px 50px;">
+                        <div class="slick-track" style="opacity: 1; width: 0px; transform: translate3d(0px, 0px, 0px);"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- chnages col-lg-8 to col-lg-12 for description -->
+              <div class="col-xs-12 col-lg-12">
+                <p style="padding-right:10%;">{{desc}}</p>
+              </div>
+              <!-- Start : Chemical warning message --><!-- BEGIN ChemicalCompositionWarning.jsp --><!-- param.shipCountryCode : --><!-- param.shipStateCode : --><!-- param.bilingCountryCode : --><!-- param.bilingStateCode : --><!-- divisionId : 688031--><!-- catalogId : 14051-->
+              <div class="Chemical-Composition-Warning">
+                <!-- prop65enabledivisionflag : false--><!-- manufacturerPartNumber : 75-A20--><!-- encodedmanufacturerPartNumber : 75-A20--><!-- countryCode : IN  regionCode : UP storeIdentifier : ParkerNA --><!-- isCaliforniaUser : true --><!--chemicalCompositionData :   {"checmicalCompostionDetail":{"DivisionID":"","Message":"","Error":""},"debug":{}}-->
+                <span>
+               </span>
+              </div>
+              <!-- END ChemicalCompositionWarning.jsp --><!-- End : Chemical warning message -->
+            </div>
+            <div id="WC_CachedProductOnlyDisplay_eSpot_div_1" class="promo_price">
+              <!-- BEGIN ESpotNavDisplay.jsp --><!--=== com.ibm.commerce.marketing.facade.datatypes.impl.MarketingSpotDataTypeImpl@51b9fce1 (baseMarketingSpotActivityDataGroup: [], previewReport: null, behavior: 0, nextTimeLimit: -1) ==== -->
+              <div class="genericESpot" id="WC_RightSidebarESpotDisplay_div_1_SpotForConfigureParts">
+                <div class="caption" style="display:none" id="WC_RightSidebarESpotDisplay_div_2_SpotForConfigureParts">[SpotForConfigureParts]</div>
+                <div class="ESpotInfo" id="WC_RightSidebarESpotInfo_SpotForConfigureParts">
+                  <a href="#" onclick="showESpotInfoPopup('ESpotInfo_popup_SpotForConfigureParts'); return false;">
+                    <div class="ESpotInfoIcon"></div>
+                  </a>
+                </div>
+
+                <div id="ESpotInfo_popup_main_div_SpotForConfigureParts" class="ESpotInfo_popup_main_div">
+                </div>
+                <script type="text/javascript"> require([ "dojo/domReady!" ], function() {parseWidget("ESpotInfo_popup_SpotForConfigureParts"); } );</script>
+                <!-- END ESpotInfoPopupDisplay.jspf-->
+              </div>
+              <!-- END ESpotNavDisplay.jsp -->
+            </div>
+          </div>
+          <!----------Product page redesigning: -->
+          <div class="col-xs-12 col-sm-9 col-lg-8 produkt-defining-attr">
+            <!-- In case of configurator or view part or Single SKU we are not displaying top black header and selection message --><!----------Product page redesigning: -->
+            <div class="form-container grey-bg add-bottom-black">
+              <form class="form-horizontal return-init-form" role="form">
+                <div id="product_attribute_container" class="product-attributes">
+
+                  <script type="text/javascript">
+                      document.write(Discount.getProductDiscountText(1309992));
+                  </script>
+
+                  <input type="hidden" name="leadTimeAvailability" id="leadTimeAvailability" value="2" autocomplete="off">
+
+
+                  <div id="PPN_1" style="display: block;" *ngIf="showBackButton">
+                    <div class="form-group required row">
+                      <div class="col-sm-12 control-label col-lg-12" style="padding-top: 0;">
+                        <a href="javascript:void(0)" (click)="backToSearchResult()">{{backToResult}}</a>
+                      </div>
+                    </div>
+                    <!--<div class="form-group required row">
+                      <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                        Descriptions:
+                      </label>
+                      <div class="col-sm-6 col-lg-6">
+                        <span id="manufacturerPartNumber">{{desc}}</span>
+                      </div>
+
+                    </div>-->
+
+                  </div>
+
+                  <div class="form-group required row" *ngIf="notes!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{notesTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{notes}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="fitsInside!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{fitsInsideTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{fitsInside}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="useWith!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{useWithTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{useWith}}
+                         </span>
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-group required row" *ngIf="contains!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_1">
+                           {{containsTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_1">
+                           {{contains}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="fits!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_2">
+                           {{fitsTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_2">
+                           {{fits}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="replace!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_3">
+                           {{replacesTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_3">
+                           {{replace}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="size!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{sizeTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{size}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="thread!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{threadTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{thread}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="od!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_4">
+                           O.D.:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_4">
+                           {{od}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="id!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_5">
+                           I.D.:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_5">
+                           {{id}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="inlet!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_4">
+                           {{inletTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_4">
+                           {{inlet}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="outlet!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_4">
+                           {{outletTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_4">
+                           {{outlet}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="length!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                           {{lengthTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{length}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="agskt!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          A. Gskt.:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{agskt}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="fgskt!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          F. Gskt.:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{fgskt}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="igskt!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          I. Gskt.:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{igskt}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="ogskt!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          O. Gskt.:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{ogskt}}
+                         </span>
+                    </div>
+                  </div>
+                  <div class="form-group required row" *ngIf="endseals!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{endSealsTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{endseals}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="grommets!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{grommetsTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{grommets}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="oring!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          O. Ring:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{oring}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="spring!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{springTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{spring}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="panGasket!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{panGasketTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{panGasket}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="realtedTo!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          {{relatedToTilte}}:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{realtedTo}}
+                         </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group required row" *ngIf="upc!=null">
+
+                    <label class="col-sm-6 control-label col-lg-6" style="padding-top: 0;">
+                         <span id="definingAttributeName_6">
+                          UPC:
+                         </span>
+                    </label>
+                    <div class="col-sm-6 col-lg-6">
+                         <span id="definingAttributeValue_6">
+                           {{upc}}
+                         </span>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+                  <!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working --><!-- HCL Done as In case of Item Addition Maximum Quantity Check was not working -->
+
+
+                  <div class="resetBtn bottom_align">
+                    <!-- BEGIN - ParkerItemResetButton.jsp -->
+                    <a  >
+                      <span id="resetSelections">&nbsp;&nbsp;</span>
+                    </a>
+                    <!-- END - ParkerItemResetButton.jsp -->
+                  </div>
+
+                  <div class="buttons-wrapper btn-wrap">
+                    <!-- BEGIN EncodedProductDescName.jspf--><!-- END EncodedProductDescName.jspf-->
+
+                  </div>
+
+
+
+
+
+                </div></form>
+            </div>
+
+            <div class="black-bg black-bg-bottom" id="buttonRow">
+              <div class="product-black-section single-sku-nonbuyable">
+                <ul>
+                  <!-- Quote Single SKU button -->
+
+                  <li>
+                    <a class="btn-whereToBuy" routerLink="/coverage/{{partNumber}}" [queryParams]="{application: appType}" onclick="" id="productApplicationCoverage">
+                      <div class="whereToBuy-txt_div">
+                        <span class="whereToBuy-txt" style="right: 0px;">{{applicationCoverageTilte}}</span>
+                      </div>
+                    </a>
+                  </li>
+
+                  <li>
+                      <a class="btn-whereToBuy" href="javascript:void(0)" (click)="openWTBPopUp()" onclick="javascript:cmCreateConversionEventTag('687PDC - Compressed Air Dryers, PSA Desiccant - Product Series','1','WHERE TO BUY','1'); clickElqWhereToBuy(); categoryDisplayJS.PopupCenter(this.href,'RFQPopUpWindow','width=1050,height=600,menubar=no,resizable=yes,scrollbars=yes');return false;" id="productPageWhereToBuy">
+                          <div class="icon-WhereToBuy_div">
+                              <span class="icon-WhereToBuy"></span>
+                              <span class="whereToBuy-separator"></span>
+                          </div>
+                          <div class="whereToBuy-txt_div">
+                              <span class="whereToBuy-txt">{{wtbTilte}}</span>
+                          </div>
+                      </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- END CachedProductOnlyDisplayFragment.jsp -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
