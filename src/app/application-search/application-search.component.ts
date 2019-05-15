@@ -172,6 +172,7 @@
           this.invalidLastNameText= this.translationService.getTranslation(this.invalidLastNameText);
           this.EmailInvalidText= this.translationService.getTranslation(this.EmailInvalidText);
           this.phoneInvalidText= this.translationService.getTranslation(this.phoneInvalidText);
+          this.searchLabel= this.translationService.getTranslation(this.searchLabel);
           this.applicationType = [
               {
                   id:'',
@@ -626,7 +627,15 @@
 
         }
         getYearList(source){
-            let url=(window as any).searchURL+'?q=NOT%20year_s:""&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=year_s&facet.limit=-1&facet.mincount=1'
+            let url=(window as any).searchURL+'?q=NOT%20year_s:""&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=year_s&facet.limit=-1&facet.mincount=1';
+                if(source=="Left"){
+                    (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                    (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('section#g3_homePage').offset().top;
+                }
+                if(source=="Model"){
+                    (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                    (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('.modal').offset().top;
+                }
 
             this.http.get(url).subscribe(
                 data => {
@@ -635,6 +644,7 @@
                     }else{
                         this.sortYear(data,source);
                     }
+                    (document.querySelector("#preloader") as HTMLElement).style.display = 'none';
                 }
             );
         }
@@ -687,8 +697,15 @@
         }
         getMakerList(source){
             this.selectedMaker="";
-            let url=(window as any).searchURL+'?q=year_s:(""'+this.selectedYearModel+')&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=make_s&facet.limit=-1&facet.mincount=1'
-
+            let url=(window as any).searchURL+'?q=year_s:(""'+this.selectedYearModel+')&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=make_s&facet.limit=-1&facet.mincount=1';
+            if(source=="Left"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('section#g3_homePage').offset().top;
+            }
+            else if(source=="Model"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('.modal').offset().top;
+            }
             this.http.get(url).subscribe(
                 data => {
                     if(source == 'Model'){
@@ -699,6 +716,7 @@
                     if(this.selectedApplicationTypeModel==2){
                         this.sort(data,'equipment_s',source);
                     }
+                    (document.querySelector("#preloader") as HTMLElement).style.display = 'none';
                 }
             );
         }
@@ -771,8 +789,15 @@
                 }
             }
             query=query.replace(/[&]/g,'%26');
-            let url=(window as any).searchURL+'?q='+query+'&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=model_facet&facet.limit=-1&facet.mincount=1'
-
+            let url=(window as any).searchURL+'?q='+query+'&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=model_facet&facet.limit=-1&facet.mincount=1';
+            if(source=="Left"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('section#g3_homePage').offset().top;
+            }
+            else if(source=="Model"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('.modal').offset().top;
+            }
             this.http.get(url).subscribe(
                 data => {
                     if(source == 'Model'){
@@ -780,6 +805,7 @@
                     }else{
                         this.sort(data,'model_facet',source);
                     }
+                    (document.querySelector("#preloader") as HTMLElement).style.display = 'none';
                 }
             );
         }
@@ -788,7 +814,15 @@
             this.selectedManufacture="";
             let query='NOT manufacturer_s:""';
             query=query.replace(/[&]/g,'%26');
-            let url=(window as any).searchURL+'?q='+query+'&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=manufacturer_s&facet.limit=-1&facet.mincount=1'
+            let url=(window as any).searchURL+'?q='+query+'&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=manufacturer_s&facet.limit=-1&facet.mincount=1';
+            if(source=="Left"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('section#g3_homePage').offset().top;
+            }
+            else if(source=="Model"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('.modal').offset().top;
+            }
             this.http.get(url).subscribe(
                 data => {
                     if(source == 'Model'){
@@ -796,6 +830,7 @@
                     }else{
                         this.sort(data,'manufacturer_s',source);
                     }
+                    (document.querySelector("#preloader") as HTMLElement).style.display = 'none';
                 }
             );
         }
@@ -807,7 +842,15 @@
                  query='manufacturer_s:"'+this.selectedManufacture+'"';
             }
             query=query.replace(/[&]/g,'%26');
-            let url=(window as any).searchURL+'?q='+query+'&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=make_s&facet.limit=-1&facet.mincount=1'
+            if(source=="Left"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('section#g3_homePage').offset().top;
+            }
+            else if(source=="Model"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('.modal').offset().top;
+            }
+            let url=(window as any).searchURL+'?q='+query+'&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=make_s&facet.limit=-1&facet.mincount=1';
             this.http.get(url).subscribe(
                 data => {
                     if(source == 'Model'){
@@ -815,6 +858,7 @@
                     }else{
                         this.sort(data,'make_s',source);
                     }
+                    (document.querySelector("#preloader") as HTMLElement).style.display = 'none';
                 }
             );
         }
@@ -895,8 +939,15 @@
                 }
             }
             query=query.replace(/[&]/g,'%26');
-            let url=(window as any).searchURL+'?q='+query+'&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&&sort=porder_si,porderNo_s,make_s asc&fl=description_s,applnNo_s,vin_si,model_s&wt=json&indent=true'
-
+            let url=(window as any).searchURL+'?q='+query+'&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&&sort=porder_si,porderNo_s,make_s asc&fl=description_s,applnNo_s,vin_si,model_s&wt=json&indent=true';
+            if(source=="Left"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('section#g3_homePage').offset().top;
+            }
+            else if(source=="Model"){
+                (document.querySelector("#preloader") as HTMLElement).style.display = 'block';
+                (document.querySelector("#preloader") as HTMLElement).style.top = (window as any).$('.modal').offset().top;
+            }
             this.http.get(url).subscribe(
                 data => {
                     if(source == 'Model'){
@@ -946,6 +997,7 @@
                         this.selectedEngin="";
                         console.log(this.engineList);
                     }
+                    (document.querySelector("#preloader") as HTMLElement).style.display = 'none';
                 }
             );
         }
@@ -1060,7 +1112,7 @@
 
         submitContact() {
             // TODO: Use EventEmitter with form value
-            if (this.partRequestForm.valid && this.partRequestForm.dirty) {
+            if (this.partRequestForm.valid ) {
                 console.log(this.partRequestForm.value);
                 this.isSubmitted=true;
                 this.lostSalesContactUrl = '/parker/baldwin/jsp/ECatalog/crossRefSearch/contactUs/crossRefContactUsForm.jsp?gid=' +this.groupId+ '&firstName=' +this.partRequestForm.value.firstName+ '&lastName='+this.partRequestForm.value.lastName+'&email='+this.partRequestForm.value.email+'&phone='+this.partRequestForm.value.phone+'&additionalInformation='+this.partRequestForm.value.additionalInformation;
