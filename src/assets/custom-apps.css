@@ -1112,6 +1112,10 @@ fusion-search .search-input .input-group-btn .search-btn-desktop span {
 	overflow: inherit !important;
 }
 
+#lightcase-case.type-image {
+	width: 570px !important;
+}
+
 .modal-backdrop{
 	position: absolute;
 	z-index: 0;

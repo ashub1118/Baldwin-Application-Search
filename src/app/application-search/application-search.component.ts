@@ -303,11 +303,17 @@
             this.params.make='';
             this.selectedYearModel = e.value;
             this.selectedYear=e.value;
-            this.parameters.push()
+            this.parameters.push();
             this.productPartResults = [];
+            this.makerListModel=[];
+            this.modelListModel=[];
+            this.engineListModel=[];
             this.selectedMaker="";
             this.selectedModel="";
             this.selectedEngin="";
+            this.selectedMakerModel="";
+            this.selectedModelModel="";
+            this.selectedEnginModel="";
             this.getMakerList('Left');
             this.getModelList('Left');
         }
@@ -393,6 +399,8 @@
             this.productPartResults = [];
             this.selectedModel="";
             this.selectedEngin="";
+            this.selectedModelModel="";
+            this.selectedEnginModel="";
             this.getModelList('Left');
 
         }
@@ -432,6 +440,7 @@
             this.engineList = [];
             this.productPartResults = [];
             this.selectedEngin="";
+            this.selectedEnginModel="";
             this.getEngineList('Left');
         }
         changeModelModel(e){
@@ -697,6 +706,7 @@
         }
         getMakerList(source){
             this.selectedMaker="";
+            this.selectedMakerModel="";
             let url=(window as any).searchURL+'?q=year_s:(""'+this.selectedYearModel+')&fq=coreName_s:ApplicationData%20AND%20vehicleRef_s:'+this.selectedApplicationTypeModel+'&rows=0&wt=json&indent=true&facet=true&facet.field=make_s&facet.limit=-1&facet.mincount=1';
             if(source=="Left"){
                 (document.querySelector("#preloader") as HTMLElement).style.display = 'block';

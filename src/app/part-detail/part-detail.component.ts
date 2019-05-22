@@ -259,7 +259,7 @@ export class PartDetailComponent implements OnInit {
                     (window as any).$('#productNameH3').html(doc["baldwinPartId_s"]);
                     (window as any).$('#productName').val(doc["baldwinPartId_s"]);
                     (window as any).$('#productURL').val(location.href+'?via=email');
-                    (window as any).$('.product-img img').attr('src','http:'+doc["partImage_si"]);
+                    (window as any).$('.product-img img').attr('src', doc["partImage_si"]);
                     (window as any).$('.product .product-info p').html(doc["description_si"]);
                 }
             });
