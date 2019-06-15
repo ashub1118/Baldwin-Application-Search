@@ -1,0 +1,126 @@
+
+<div class="bootstrap">
+  <div id="content">
+    <div id="inner-content" class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div id="sidebar">
+            <span class="sidebar-title">{{applicationCoverageText}}</span>
+            <div class="filter-title">
+              <a>{{applicationTypeText}}</a>
+              <i class="fa fa-question-circle filter-info-tooltip" data-toggle="tooltip" data-placement="right" title="Application Type" data-original-title="Application Type"></i>
+            </div>
+            <div class="p-3">
+              <ng-select2  [data]="applicationType"
+                           [(ngModel)]="selectedApplicationType"
+                           (valueChanged)="changeCoverageApplicationType($event)" [placeholder]="placeHolderApplication"
+              ></ng-select2>
+
+            </div>
+          </div>
+
+          <div class="return-btn" >
+          <a (click)="returnToApplicationMethod()"> <i class="fa fa-arrow-left" aria-hidden="true"></i>{{returnToApplicationSearch}}  </a>
+          </div>
+
+        </div>
+        <div class="col-lg-9">
+          <div id="divResultsSearch" class="section" style="margin-bottom: 2em;">
+            <div class="search-results">
+              <strong id="txtSearched">{{searchResultsTextFor}}:</strong>
+              <ul id="checkSel">
+                <li class="alert" *ngFor="let breadcum of selectionBreadCum" > {{breadcum.value}}
+           <!--       <span  data-dismiss="alert" aria-label="close" (click)="removeBreadcum(breadcum)">
+                  <i class="fa fa-times" aria-hidden="true"></i></span>-->
+                </li>
+
+              </ul>
+
+            </div>
+
+
+          </div>
+          <div class="results">
+            <div *ngIf="numFound>0 || numFound ==null; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+            <app-application-ref-pagination  (pageChanged)="pageChanged($event)" [count]="row" [totalcount]="totalcount" [currentPage]="currentPage" (rowChanged)="rowChangeEvent($event)"></app-application-ref-pagination>
+            <table id="search-results" cellpadding="0" cellspacing="10" border="0" style="overflow-x:auto;width: 100%;" class="dataTable no-footer table-responsive" >
+              <thead>
+              <tr role="row">
+                <td>{{makeText}}  </td>
+                <td>{{model}}</td>
+                <td>{{year}}</td>
+                <td>{{description}}</td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr class="infoWindow">
+                <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+              </tr>
+              <ng-container *ngFor="let row of data; let i = index" >
+                <tr role="row" class="odd accordion-row" id="accordian{{row.applnNo_s}}"  >
+                  <td>{{row.make_s}}</td>
+                  <td>{{row.model_s}}</td>
+                  <td>{{row.year_s}}</td>
+                  <td class="cross-baldwin">{{row.description_s}}</td>
+                  <td></td>
+                  <td ><a style="border-bottom:none;" data-toggle="collapse"  id="toggle{{row.applnNo_s}}" class=" accordion-toggle" href="#demo{{row.applnNo_s}}"><i class="fa fa-chevron-right" (click)="accordianClicked($event,row.applnNo_s)" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                  <td colspan="6" style="width:100%; padding:0px;" >
+                    <div id="demo{{row.applnNo_s}}" class="accordian-body collapse">
+                      <table id="search-results" cellpadding="0" cellspacing="10" border="0" style="width: 100%;" class="dataTable no-footer">
+                        <thead>
+                        <tr role="row">
+                          <td>{{filter}} </td>
+                          <td>{{baldwinNumber}} </td>
+                          <td>{{qualifier}}</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="infoWindow">
+                          <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+                        </tr>
+                        <tr role="row" class="odd" *ngFor="let accordian of accordianData">
+                          <td>{{accordian.partPrompt_si}}</td>
+                          <td class="cross-baldwin"><a *ngIf="checkUrl(accordian.bPartnumber_s)==true" routerLink="/partDetail/{{accordian.bPartnumber_s}}" [queryParams]="{application: selectedApplicationType}">{{accordian.bPartnumber_s}}</a>
+                            <a *ngIf="checkUrl(accordian.bPartnumber_s)==false">{{accordian.bPartnumber_s}}</a>
+                          </td>
+                          <td>{{accordian.notes_si}}</td>
+                        </tr>
+                        <tr class="infoWindow">
+                          <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="infoWindow">
+                  <td colspan="6" class="hiddenRow" style="padding:0;"></td>
+                </tr>
+              </ng-container>
+              </tbody>
+            </table>
+            </ng-template>
+            <ng-template #elseBlock>
+              <div class="flw search-not-found">
+                <h3>{{noApplicationFoundText}}</h3>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="http://preview.baldwinfilters.com/parker/newparkerstyle/responsive/js/homeBannerScript.js"></script>
+<!-- .container-->
+<!-- ./container-->

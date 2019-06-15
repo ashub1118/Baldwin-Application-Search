@@ -1,0 +1,26 @@
+<div id="search-results_wrapper" class="dataTables_wrapper no-footer">
+  <div class="top">
+    <div id="search-results_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="search-results"></label></div>
+    <div class="dataTables_length" id="search-results_length">
+      <label>
+        {{resultPerPage}}
+        <select name="search-results_length" aria-controls="search-results" class="" (change)="rowChangedEvent($event)" [ngModel]="count">
+          <option *ngFor="let page of paginationOptions" value="{{page}}" >{{page}}</option>
+
+        </select>
+      </label>
+    </div>
+    <div class="dataTables_paginate paging_simple_numbers" id="search-results_paginate">
+      <a class="paginate_button previous " (click)="goToPage(currentPage-1,$event)" [ngClass]=" {'disabled':disablePrev==true }" aria-controls="search-results" data-dt-idx="0" tabindex="0" id="search-results_previous"> {{prev}}</a>
+
+
+
+      <span *ngFor="let page of startPaginationFrom" ><a  (click)="goToPage(page,$event)"  [ngClass]=" {'current':page==currentPage }" class="paginate_button" aria-controls="search-results" data-dt-idx="1" tabindex="0">{{page}}</a>
+                                       </span>
+
+
+      <a class="paginate_button next" (click)="goToPage(currentPage+1,$event)" [ngClass]=" {'disabled':disableNext==true }"  aria-controls="search-results" data-dt-idx="2" tabindex="0" id="search-results_next">{{next}} </a></div>
+  </div>
+  <div id="search-results_processing" class="dataTables_processing" style="display: none;"></div>
+  <div class="clear"></div>
+</div>
