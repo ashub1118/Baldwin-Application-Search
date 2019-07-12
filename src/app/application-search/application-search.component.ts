@@ -133,6 +133,7 @@
 
       ngOnInit() {
          // this.getYearList();
+          window.scroll(0,0);
           (window as any).$('.my-4.pull-left').html("APPLICATION SEARCH");
           (window as any).$('.button-set-email').hide();
           this.subsEvent=true;
@@ -467,6 +468,7 @@
             this.url.setUrl((window as any).location.href);
             this.url.setApplicationType(this.selectedApplicationType);
             console.log((window as any).location.href);
+       //     this.saveSearchedData(this.selectedAppId);
             this.productPartResult();
         }
 
@@ -483,7 +485,6 @@
             this.url.setApplicationType(application);
             if(e.value.length>0){
                 this.selectedAppId = e.value;
-
                 this.popUpSubmitButtonDisabled = false;
             }
         }
@@ -658,6 +659,14 @@
             );
         }
 
+        saveSearchedData(applnNo){
+            let url='/parker/baldwin/jsp/ECatalog/Application-Search/insertAppLookupsData.jsp?applnNo='+applnNo;
+            this.http.get(url).subscribe(
+                data => {
+
+                }
+            );
+        }
         sort(data,key,source){
             let flag= true ;
             let maker=  [];
@@ -1072,6 +1081,7 @@
         }
 
         productPartResult(){
+            this.saveSearchedData(this.selectedAppId);
             setTimeout(() => {
                 this.url.setUrl((window as any).location.href);
                 console.log((window as any).location.href);

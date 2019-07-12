@@ -75,7 +75,8 @@ export class PartDetailComponent implements OnInit {
 
     ngOnInit() {
         let via = this.route.snapshot.queryParamMap.get("via");
-        console.log(via);
+        window.scroll(0,0);
+      //  console.log(via);
         if(via!==undefined && via=='email'){
             this.showBackButton = false;
         }

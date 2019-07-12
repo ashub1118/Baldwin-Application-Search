@@ -181,7 +181,7 @@
               <tr role="row" class="odd">
                 <td>{{result.partPrompt_si}}</td>
                 <td class="cross-baldwin"><a *ngIf="checkUrl(result.bPartnumber_s)==true" routerLink="/partDetail/{{result.bPartnumber_s}}" [queryParams]="{application: selectedApplicationType}">{{result.bPartnumber_s}}</a>
-                  <a *ngIf="checkUrl(result.bPartnumber_s)==false">{{result.bPartnumber_s}}</a>
+                  <a *ngIf="checkUrl(result.bPartnumber_s)==false" style="text-decoration: none;color: black;">{{result.bPartnumber_s}}</a>
                 </td>
                 <td>{{result.notes_si}}</td>
                 <td></td>

@@ -98,6 +98,7 @@ export class ApplicationCoverageComponent implements OnInit {
     ngOnInit() {
         (window as any).$('.my-4.pull-left').html("APPLICATION COVERAGE");
         (window as any).$('.button-set-email').hide();
+        window.scroll(0,0);
         this.urlToPass=this.url.getUrl();
         this.i=0;
         this.applicationTypeFromService=this.route.snapshot.queryParamMap.get("application");
